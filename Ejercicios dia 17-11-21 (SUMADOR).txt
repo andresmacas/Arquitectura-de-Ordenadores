@@ -1,0 +1,57 @@
+17/11/21
+--ejercicio 1
+-- Code your testbench here
+library IEEE;
+use IEEE.std_logic_1164.all;
+entity signals is
+	port (a,b,c,d  : in std_logic;
+    	  f : out std_logic;
+end signals;
+
+architecture Seharvioral of signals is
+
+signal s1, s2 : std_logic;
+begin
+	s1 <= a and b;
+    s2 <= c or d;
+    f <= s1 or s2;
+end Behavioral;
+
+--ejercicio 2 SUMADOR
+-- Code your testbench here
+library IEEE;
+use IEEE.std_logic_1164.all;
+entity sumador is
+	port(A,B : in std_logic_vector (0 to 3);
+    S : out std_logic_vector (0 to 3);
+    Cout out std_logic;
+end sumador;
+
+architecture arqsumador of sumador is
+signal C : std_logic_vector (0 to 2);
+begin
+	S(0) <= A(0) xor B(0);
+    C(0) <= A(0) and B(0);
+    S(1) <= (A(1) xor B(1) xor C(0));
+    C(1) <= (A(1) and  B(1)) or (C(0) and (A(1) xor B(1));
+    S(2) <= (A(2) xor B(2) xor C(1));
+    C(2) <= (A(2) and B(2) or (C(1) and (A(2) xor B(2)));
+    S(3) <= (A(3) xor B(3) xor C(2));
+    Cout <= (A(3) and B(3)) or (C(2) and (A(3) xor B(3)));
+end arqsumador;
+
+--ejercicio 3 circuito de compuertas
+-- Code your testbench here
+library IEEE;
+use IEEE.std_logic_1164.all;
+entity citcuito is
+	port(a,b,c,d,e,f : in std_logic;
+    x1,x2,x3 : out std_logic;
+end circuito;
+
+architecture arqcircuito of circuito is
+begin
+	x1 <= (a xnor b);
+    x2 <= ((c and b) or x1) nand ((e xor f) and (c and d));
+    x3 <= (e xor f) and (c and d);
+end arqcircuito;

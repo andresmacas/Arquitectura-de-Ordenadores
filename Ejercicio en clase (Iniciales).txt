@@ -1,0 +1,30 @@
+--Ejercicio 1
+
+entity Ejercicio1 is
+port(a, b, c, d, e, f, g, h: in bit;
+	F: out bit):
+end Ejercicio1;
+
+--Ejercicio 2
+entity Ejercicio2 is
+port(A3, A2, A1, A0, B3, B2, B1, B0: in bit;
+	S3, S2, S1, S0: out bit;
+	C3, C2, C1, C0: inout bit):
+end Ejercicio2;
+
+--Ejercicio 3
+// Code your testbench here
+library iee;
+use ieee.std_logic_1164.all;
+
+entity ejercicio is
+port (a, b, c, d: in std_logic; f1 : out std_logic);
+end ejercicio;
+
+use work.gates.all;
+
+arquitecture flujo of ejercicio is
+begin
+	f1 <= ((a or b) and (c and d)) or not ((a or b) and (c and d))
+	//f1 <= (a or b) xnor (c and d);
+end flujo;
