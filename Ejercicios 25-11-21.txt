@@ -1,0 +1,94 @@
+--Comparador de 4 bits
+library IEEE;
+use IEEE.std_logic_1164.all;
+entity secuencial is
+	port(a,b: in std_logic_vector (3 downto 0);
+    x, y, z : out std_logic;
+end secuencial;
+
+architecture arc of secuencial is
+begin
+	process a,b
+      if(a = b)then
+      x <= '1'; y <= '0'; z <= '0';
+      elsif (a > b) then
+      x <= '0'; y <= '1'; z <= '0'; else
+      x <= '0'; y <= '0'; z <= '1';
+      end if;
+    end process
+end arc;
+
+--Decodicador de bcd  decimal
+library IEEE;
+use IEEE.std_logic_1164.all;
+entity decodificador is
+	port(x: in std_logic_logic (0 upto 3));
+    d0, d1, d2, d3, d4, d5, d6, d7, d8, d9 : out std_logic;
+end decodificador;
+
+architecture arc of decodificador is
+begin
+	(process x)
+    begin
+      d0 <= '1'; d1 <= '1'; d2 <= '1'; d3 <= '1'; d4 <= '1'; d5 <= '1'; d6 <= '1'; d7 <= '1'; d8 <= '1'; d9 <= '1'; 
+      if(x = '0000')then
+      	d0 <= '0';
+      elsif(x = "0001") then 
+      	d1 <= '0';
+      elsif(x = "0010") then 
+        d2 <= '0';
+      elsif(x = "0011") then 
+      	d3 <= '0';
+      elsif(x = "0100") then 
+      	d4 <= '0';
+      elsif(x = "0101") then 
+      	d5 <= '0';
+      elsif(x = "0110") then 
+      	d6 <= '0';
+      elsif(x = "0111") then 
+      	d7 <= '0';
+      elsif(x = "1000") then 
+      	d8 <= '0';
+      elsif(x = "1001") then 
+      	d9 <= '0';
+      end if;
+    end process
+end arc;
+
+--Decodicador de bcd  decimal
+library IEEE;
+use IEEE.std_logic_1164.all;
+entity deccase is
+	port(a: in std_logic_logic_vector (0 to 3);
+    d : out std_logic_vector (0 to 6);
+end deccase;
+
+architecture arc of deccase is
+begin
+	(process a0, a1, a2, a3)
+    begin
+      if(a = "0000")then
+      	d <= "0000001";
+      elsif(a = "0001") then 
+      	d <= "1001111";
+      elsif(a = "0010") then 
+        d <= "0010010";
+      elsif(a = "0011") then 
+      	d <= "0000110";
+      elsif(a = "0100") then 
+      	d <= "1001100";
+      elsif(a = "0101") then 
+      	d <= "0100100";
+      elsif(a = "0110") then 
+      	d <= "0100000";
+      elsif(a = "0111") then 
+      	d <= "0001110";
+      elsif(a = "1000") then 
+      	d <= "0000000";
+      elsif(a = "1001") then 
+      	d <= "0000100";
+      else
+        d <= "1111111";
+      end if;
+    end process
+end arc;
